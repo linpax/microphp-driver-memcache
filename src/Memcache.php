@@ -116,6 +116,25 @@ class Memcache implements DriverInterface
     /**
      * @inheritdoc
      */
+    public function has($key)
+    {
+        switch (get_class($this->driver)) {
+            case 'Memcached':
+                $this->driver->get($key);
+                return $this->driver->getResultCode() === \Memcached::RES_SUCCESS;
+
+            case 'Memcache':
+                return $this->driver->get($key) !== false;
+
+            default:
+                return false;
+        }
+
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function delete($name)
     {
         return $this->driver->delete($name);
