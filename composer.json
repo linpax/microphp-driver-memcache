@@ -11,5 +11,10 @@
   ],
   "require": {
     "linpax/microphp-driver": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Micro\\Driver\\Memcache\\": "src/"
+    }
   }
 }
