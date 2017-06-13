@@ -47,7 +47,7 @@ class Memcache implements DriverInterface
 
         if (!empty($config['servers'])) {
             $this->driver->addServers($config['servers']);
-        } elseif ($config['server']) {
+        } elseif (!empty($config['server'])) {
             $conf = $config['server'];
             $server = [
                 'hostname' => !empty($conf['hostname']) ? $conf['hostname'] : '127.0.0.1',
